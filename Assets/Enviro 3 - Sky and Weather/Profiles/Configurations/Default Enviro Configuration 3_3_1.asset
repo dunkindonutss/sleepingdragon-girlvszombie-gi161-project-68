@@ -131,9 +131,9 @@ MonoBehaviour:
   preset: {fileID: 11400000, guid: 0fcdd472bd6a8ec429fc1e9bc978c4fa, type: 2}
   showCirrusCloudsControls: 0
   show2DCloudsControls: 0
-  cloudFlatBaseAnim: {x: -0.0057515055, y: -0.8039948}
-  cloudFlatDetailAnim: {x: -0.2088662, y: 0.46905786}
-  cirrusAnim: {x: 0.8385831, y: 0.7338623}
+  cloudFlatBaseAnim: {x: 0.682135, y: 0.50690246}
+  cloudFlatDetailAnim: {x: -0.7025935, y: -0.99377245}
+  cirrusAnim: {x: -0.81833404, y: 0.3914417}
 --- !u!114 &-6613759932185320841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,7 +913,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    skyColorTint: {r: 0.4528302, g: 0.36525455, b: 0.36525455, a: 1}
+    skyColorTint: {r: 1, g: 1, b: 1, a: 1}
     skyColorExponent: 1.5
   preset: {fileID: 11400000, guid: 44f43418b8d8b8142863e38d1e49e174, type: 2}
   showSkyControls: 1
@@ -960,7 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18a0693e95fd064e9d0a3b96e538236, type: 3}
   m_Name: Lighting Module
   m_EditorClassIdentifier: 
-  showModuleInspector: 0
+  showModuleInspector: 1
   showSaveLoad: 0
   active: 1
   Settings:
@@ -1369,7 +1369,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    directLightIntensityModifier: 0.506
+    directLightIntensityModifier: 0.261
     setAmbientLighting: 1
     ambientMode: 0
     ambientSkyColorGradient:
@@ -1486,7 +1486,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    ambientIntensityModifier: 1.196
+    ambientIntensityModifier: 1.049
     ambientUpdateEveryFrame: 0
     ambientUpdateIntervall: 0.1
     shadowIntensity: 1
@@ -1519,7 +1519,7 @@ MonoBehaviour:
     yearSerial: 2039
     timeOfDay: 6
     latitude: -90
-    longitude: 41
+    longitude: 60
     utcOffset: -2
     cycleLengthInMinutes: 10
     dayLengthModifier: 1
@@ -1532,7 +1532,7 @@ MonoBehaviour:
   preset: {fileID: 11400000, guid: 82acdd278499d74498ad37dd931734d1, type: 2}
   showTimeControls: 0
   showLocationControls: 1
-  LST: 215.28351
+  LST: 234.28351
 --- !u!114 &1310742743334959994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1725,7 +1725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456bf221b186fde4096dcf2c1841b35a, type: 3}
   m_Name: Quality Module
   m_EditorClassIdentifier: 
-  showModuleInspector: 1
+  showModuleInspector: 0
   showSaveLoad: 0
   active: 1
   Settings:
@@ -2220,9 +2220,9 @@ MonoBehaviour:
   showDensityControls: 0
   showTextureControls: 0
   showWindControls: 0
-  cloudAnimLayer1: {x: 0.12897007, y: 0.9503106, z: 0.40804774}
+  cloudAnimLayer1: {x: -0.39158702, y: -0.5450657, z: -0.5551599}
   cloudAnimLayer2: {x: -0.4793451, y: 0.47841242, z: 0.015471124}
-  cloudAnimNonScaledLayer1: {x: -0.77797973, y: -1.6906227, z: -68.97817}
+  cloudAnimNonScaledLayer1: {x: -1.0705972, y: -1.3980415, z: -70.44493}
   cloudAnimNonScaledLayer2: {x: -0.001515836, y: 0.0009908647, z: -0.28406617}
   weatherMap: {fileID: 0}
 --- !u!114 &4011421771873438716

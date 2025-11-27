@@ -16,6 +16,7 @@ MonoBehaviour:
   - {fileID: 7391319092446245454}
   - {fileID: 2864312857019463878}
   - {fileID: 2897402824743745587}
+  - {fileID: 8986407880789526174}
 --- !u!114 &2864312857019463878
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -37,10 +38,10 @@ MonoBehaviour:
     m_Value: 0
   compareStyle:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 1
   comparePanning:
     m_OverrideState: 0
-    m_Value: 0.25
+    m_Value: 0.391
   compareLineAngle:
     m_OverrideState: 0
     m_Value: 1.4
@@ -124,32 +125,32 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   tonemapAGXGamma:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 2.5
   tonemapMaxInputBrightness:
     m_OverrideState: 0
     m_Value: 1000
   tonemapExposurePre:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: -0.55
   tonemapBrightnessPost:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 2.35
   saturate:
     m_OverrideState: 1
-    m_Value: -0.25
+    m_Value: 0
   brightness:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0.767
   contrast:
     m_OverrideState: 1
-    m_Value: 0.975
+    m_Value: 1
   daltonize:
     m_OverrideState: 0
     m_Value: 0.183
   sepia:
     m_OverrideState: 1
-    m_Value: 0.15
+    m_Value: 0.45
   tintColor:
     m_OverrideState: 0
     m_Value: {r: 0.764151, g: 0, b: 0, a: 0}
@@ -163,8 +164,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   lutIntensity:
-    m_OverrideState: 1
-    m_Value: 0.025
+    m_OverrideState: 0
+    m_Value: 0.242
   lutTexture:
     m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: b8fc4d47ab82140b6add161a4d3ea695, type: 3}
@@ -272,7 +273,7 @@ MonoBehaviour:
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   anamorphicFlaresIntensity:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 14.55
   anamorphicFlaresThreshold:
     m_OverrideState: 0
     m_Value: 6.27
@@ -431,10 +432,10 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0.01
   lensDirtIntensity:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 4.53
   lensDirtThreshold:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.496
   lensDirtTexture:
     m_OverrideState: 0
@@ -445,7 +446,7 @@ MonoBehaviour:
     m_Value: 3
   chromaticAberrationIntensity:
     m_OverrideState: 1
-    m_Value: 0.0083
+    m_Value: 0.0075
   chromaticAberrationShift:
     m_OverrideState: 0
     m_Value: 0
@@ -498,10 +499,10 @@ MonoBehaviour:
     m_Value: 25
   depthOfFieldFocalLengthReal:
     m_OverrideState: 1
-    m_Value: 119
+    m_Value: 104
   depthOfFieldFStop:
     m_OverrideState: 1
-    m_Value: 2.8
+    m_Value: 7
   depthOfFieldImageSensorHeight:
     m_OverrideState: 0
     m_Value: 24
@@ -767,14 +768,14 @@ MonoBehaviour:
     m_Value: {fileID: 2800000, guid: 12dad9af63f15c94a876cb407450782f, type: 3}
     dimension: 1
   filmGrainEnabled:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   filmGrainIntensity:
-    m_OverrideState: 0
-    m_Value: 0.529
+    m_OverrideState: 1
+    m_Value: 0.696
   filmGrainResolution:
-    m_OverrideState: 0
-    m_Value: 0.313
+    m_OverrideState: 1
+    m_Value: 0.625
   filmGrainLumaAttenuation:
     m_OverrideState: 0
     m_Value: 0.8
@@ -824,13 +825,13 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 2.99
+    m_Value: 5.5
   anisotropic:
     m_OverrideState: 1
     m_Value: 0.061
   maxDistance:
     m_OverrideState: 1
-    m_Value: 38.6
+    m_Value: 20.1
   fogMinHeight:
     m_OverrideState: 0
     m_Value: 0
@@ -886,3 +887,22 @@ MonoBehaviour:
   clamp:
     m_OverrideState: 0
     m_Value: 0.05
+--- !u!114 &8986407880789526174
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb60a22f311433c4c962b888d1393f88, type: 3}
+  m_Name: PaniniProjection
+  m_EditorClassIdentifier: 
+  active: 1
+  distance:
+    m_OverrideState: 1
+    m_Value: 1
+  cropToFit:
+    m_OverrideState: 0
+    m_Value: 1
