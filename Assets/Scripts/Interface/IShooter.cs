@@ -1,9 +1,6 @@
 using UnityEngine;
 
-public class IShooter : MonoBehaviour
+public interface IShooter
 {
-    public void Shoot(Weapons weapons)
-    {
-        
-    }
+    void Shoot(Weapons weapons);
 }
