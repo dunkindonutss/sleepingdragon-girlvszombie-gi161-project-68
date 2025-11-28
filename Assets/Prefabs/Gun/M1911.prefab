@@ -255,9 +255,10 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: fd0c08cca89c7cc4c8e61b8d96030b3d, type: 2}
   l_handEffector: {fileID: 8444044327282757360}
   r_handEffector: {fileID: 6047772484831216014}
+  aimTransform: {fileID: 4276155827671136955}
   weaponName: M1911
   weaponPrefab: {fileID: 1694449805434718}
-  bulletSpawnPoint: {fileID: 0}
+  bulletSpawnPoint: {fileID: 6151005661359140674}
 --- !u!1 &1748277932983872
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,7 +610,7 @@ Transform:
   m_GameObject: {fileID: 5384623251989934854}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.0201, y: -0.0401, z: 0.044}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -640,7 +641,7 @@ Transform:
   m_GameObject: {fileID: 8139653085271919479}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.0286, y: -0.0444, z: 0.0497}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
