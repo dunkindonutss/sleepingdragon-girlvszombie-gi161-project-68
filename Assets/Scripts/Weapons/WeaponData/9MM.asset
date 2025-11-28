@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bbaf43d13c4c640b103bafab5cba5c, type: 3}
   m_Name: 9MM
   m_EditorClassIdentifier: 
-  WeaponName: 9MM
-  WeaponPrefab: {fileID: 0}
+  WeaponName: M1911
+  WeaponIcon: {fileID: 21300000, guid: 1fa86cd92214af047a132ae526be2779, type: 3}
   WeaponDamage: 5
-  Bullet: {fileID: 0}
+  Bullet: {fileID: 11400000, guid: fa9f0f6e39aea72429f9d72039062010, type: 2}
   WeaponFireRate: 5
-  MagazineSize: 0
+  MagazineSize: 12

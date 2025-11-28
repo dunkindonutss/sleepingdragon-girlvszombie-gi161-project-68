@@ -12,11 +12,12 @@ public abstract class Weapons : MonoBehaviour
     [SerializeField] private string weaponName;
     [SerializeField] private GameObject weaponPrefab;
     [SerializeField] public Transform bulletSpawnPoint;
+
     public int WeaponDamage { get; private set; }
     private BulletData bulletData;
-    public float WeaponFireRate { get; private set;}
-    public int MagazineSize { get; private set;}
-    public int BulletInGun {get; private set;}
+    [field: SerializeField] public float WeaponFireRate { get; private set;}
+    [field: SerializeField] public int MagazineSize { get; private set;}
+    [field: SerializeField] public int BulletInGun { get; private set;}
     private IShooter Shooter;
 
     private void Start()
@@ -27,7 +28,6 @@ public abstract class Weapons : MonoBehaviour
     public void InitializeWeapon()
     {
         weaponName = weaponData.WeaponName;
-        weaponPrefab = weaponData.WeaponPrefab;
         AdjustWeaponDamage(weaponData.WeaponDamage);
         bulletData = weaponData.Bullet;
         WeaponFireRate = weaponData.WeaponFireRate;
@@ -39,30 +39,40 @@ public abstract class Weapons : MonoBehaviour
         MagazineSize = magazineSize;
     }
 
+    public void AdjustBulletInGun(int amount)
+    {
+        BulletInGun += amount;
+    }
+
     public void AdjustWeaponDamage(int damage)
     {
         WeaponDamage = damage;
     }
     
-    protected virtual void BulletMove()
+    // เติมกระสุน โดยไม่ให้เกิน MagazineSize
+    public void ReloadMagazine(int bulletCount)
     {
-        
-    }
-
-    public void OnHitWith(Character character)
-    {
-        character.TakeDamage(WeaponDamage);
-    }
-
-    public int GetShootDirection()
-    {
-        return Mathf.RoundToInt(transform.eulerAngles.z);
-    }
-
-    public void ReloadMagazine()
-    {
-        BulletInGun = MagazineSize;
+        BulletInGun = Mathf.Min(BulletInGun + bulletCount, MagazineSize);
     }
     
+    public void Fire()
+    {
+        if (BulletInGun <= 0)
+        {
+            Debug.Log("No bullets");
+            return;
+        }
 
+        BulletInGun--;
+
+        GameObject bulletObj = Instantiate(bulletData.bulletPrefab,
+            bulletSpawnPoint.position,
+            bulletSpawnPoint.rotation);
+
+        Bullet bullet = bulletObj.GetComponent<Bullet>();
+        bullet.bulletData = bulletData;
+
+        bullet.Initialize();   // ใส่ค่าจาก bulletData
+        bullet.BulletMove();   // ยิงออกไป
+    }
 }

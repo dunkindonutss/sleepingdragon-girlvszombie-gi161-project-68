@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb934eac7685224a83f9137213cd12d, type: 3}
   m_Name: Pistol_Ammo
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 2989000923634411228, guid: e38fb0b8303487b47896259deca1deb3, type: 3}
   BulletForce: 10
   Damage: 5
   LifeTime: 3

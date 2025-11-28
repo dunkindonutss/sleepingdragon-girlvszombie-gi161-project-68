@@ -9,7 +9,9 @@ public class InputManager : MonoBehaviour
 
     private Vector2 moveInput;
     private bool crouchPressed;
-    private bool changeWeaponPressed; // สำหรับตรวจสอบการกดครั้งเดียว
+    private bool changeWeaponPressed;
+    private bool reloadPressed;
+    private bool shootPressed;       // สำหรับตรวจสอบการยิง
 
     private void Awake()
     {
@@ -29,8 +31,10 @@ public class InputManager : MonoBehaviour
         input.Movement.Crouch.performed += ctx => crouchPressed = true;
         input.Movement.Crouch.canceled  += ctx => crouchPressed = false;
 
-        // เพิ่ม ChangeWeapon
         input.GamePlay.ChangeWeapon.performed += OnChangeWeapon;
+        input.GamePlay.Reload.performed += OnReload;
+        input.GamePlay.Shoot.performed += OnShoot;
+        
     }
 
     private void OnDisable()
@@ -39,36 +43,53 @@ public class InputManager : MonoBehaviour
         input.Movement.Move.canceled  -= OnMoveCanceled;
 
         input.GamePlay.ChangeWeapon.performed -= OnChangeWeapon;
+        input.GamePlay.Reload.performed -= OnReload;
+        input.GamePlay.Shoot.performed -= OnShoot;
 
         input.Disable();
     }
 
-    private void OnMove(InputAction.CallbackContext ctx)
-    {
-        moveInput = ctx.ReadValue<Vector2>();
-    }
+    private void OnMove(InputAction.CallbackContext ctx) => moveInput = ctx.ReadValue<Vector2>();
+    private void OnMoveCanceled(InputAction.CallbackContext ctx) => moveInput = Vector2.zero;
 
-    private void OnMoveCanceled(InputAction.CallbackContext ctx)
-    {
-        moveInput = Vector2.zero;
-    }
+    private void OnChangeWeapon(InputAction.CallbackContext ctx) => changeWeaponPressed = true;
+    private void OnReload(InputAction.CallbackContext ctx) => reloadPressed = true;
+    private void OnShoot(InputAction.CallbackContext ctx) => shootPressed = true;
 
-    private void OnChangeWeapon(InputAction.CallbackContext ctx)
-    {
-        // ปุ่มถูกกดครั้งเดียว จะเซ็ต flag เป็น true
-        changeWeaponPressed = true;
-    }
-
+    // ฟังก์ชันดึงค่า input
     public float GetHorizontal() => moveInput.x;
     public Vector2 GetMove() => moveInput;
+    public Vector2 GetMouseDelta() 
+    {
+        return input.GamePlay.MouseDelta.ReadValue<Vector2>();
+    }
     public bool IsCrouching() => crouchPressed;
 
-    // ฟังก์ชันสำหรับดึงค่าการกดเปลี่ยนอาวุธ
     public bool TryChangeWeapon()
     {
         if (changeWeaponPressed)
         {
-            changeWeaponPressed = false; // รีเซ็ต flag หลัง trigger ครั้งเดียว
+            changeWeaponPressed = false;
+            return true;
+        }
+        return false;
+    }
+
+    public bool TryReload()
+    {
+        if (reloadPressed)
+        {
+            reloadPressed = false;
+            return true;
+        }
+        return false;
+    }
+
+    public bool TryShoot()
+    {
+        if (shootPressed)
+        {
+            shootPressed = false;
             return true;
         }
         return false;

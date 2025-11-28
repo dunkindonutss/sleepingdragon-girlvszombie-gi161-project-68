@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb934eac7685224a83f9137213cd12d, type: 3}
   m_Name: AR_Ammo
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 8585542772986347399, guid: 9453b89e2e23c2840aee891484cadec8, type: 3}
   BulletForce: 20
   Damage: 10
   LifeTime: 5

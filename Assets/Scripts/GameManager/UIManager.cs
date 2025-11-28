@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     public void RefreshWeaponUI()
     {
         weaponNameText.text = $"{Player.Instance.CurrentWeapon.weaponData.WeaponName}";
-        bulletCountText.text = $"{Player.Instance.CurrentWeapon.BulletInGun}/{Player.Instance.CurrentWeapon.weaponData.MagazineSize}";
+        bulletCountText.text = $"{Player.Instance.CurrentWeapon.BulletInGun}/{Inventory.Instance.ammo[Inventory.Instance.currentWeaponIndex]}";
         weaponImage.sprite = Player.Instance.CurrentWeapon.weaponData.WeaponIcon;
     }
     

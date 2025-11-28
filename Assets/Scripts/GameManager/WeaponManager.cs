@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
@@ -14,9 +15,14 @@ public class WeaponManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
-        ChangeWeapon();
+        ChangeNextWeapon();
     }
 
     public void ShowCurrentWeapon()
@@ -30,7 +36,7 @@ public class WeaponManager : MonoBehaviour
             weaponObject[index].SetActive(true);
     }
 
-    public void ChangeWeapon()
+    public void ChangeNextWeapon()
     {
         if (!InputManager.Instance.TryChangeWeapon()) return;
 
@@ -57,6 +63,14 @@ public class WeaponManager : MonoBehaviour
         Inventory.Instance.currentWeaponIndex = nextIndex;
 
         Player.Instance.ChangeWeapon(nextIndex);
+        ShowCurrentWeapon();
+        ikController.SetGunTargets(Player.Instance.CurrentWeapon.r_handEffector,Player.Instance.CurrentWeapon.l_handEffector);
+        UIManager.Instance.RefreshWeaponUI();
+    }
+
+    public void ChangeWeapon(int index)
+    {
+        Player.Instance.ChangeWeapon(index);
         ShowCurrentWeapon();
         ikController.SetGunTargets(Player.Instance.CurrentWeapon.r_handEffector,Player.Instance.CurrentWeapon.l_handEffector);
         UIManager.Instance.RefreshWeaponUI();
