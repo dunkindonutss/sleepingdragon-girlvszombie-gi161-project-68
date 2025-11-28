@@ -1,13 +1,29 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory Instance;
     [Header("Ammo")]
     //0= pistol 1 = Ar
-    public int[] ammo {get; private set;}
+    [field: SerializeField] public int[] ammo {get; private set;}
     [Header("Weapons")]
-    public List<Weapons> WeaponsList {get; private set;}
+    [SerializeField] private Weapons[] AllWeapons;
+    [field: SerializeField] public List<Weapons> WeaponsList {get; private set;}
+    public int currentWeaponIndex;
+
+    private void Start()
+    {
+        AddWeapon(0);
+        AddWeapon(1);
+    }
+    
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
 
     public int CountAmmo(int index)
     {
@@ -19,8 +35,13 @@ public class Inventory : MonoBehaviour
         ammo[index] += amount;
     }
 
-    public void AddWeapon(Weapons weaponToAdd)
+    public void AddWeapon(int index)
     {
-        WeaponsList.Add(weaponToAdd);
+        WeaponsList.Add(AllWeapons[index]);
+    }
+
+    public Weapons GetCurrentWeapon()
+    {
+        return WeaponsList[currentWeaponIndex];
     }
 }

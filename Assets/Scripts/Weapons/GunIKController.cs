@@ -26,13 +26,13 @@ public class GunIKController : MonoBehaviour
 
         // Right hand
         ik.solver.rightHandEffector.target = rightHandTarget;
-        ik.solver.rightHandEffector.positionWeight = currentWeight;
-        ik.solver.rightHandEffector.rotationWeight = currentWeight;
+        //ik.solver.rightHandEffector.positionWeight = currentWeight;
+        //ik.solver.rightHandEffector.rotationWeight = currentWeight;
 
         // Left hand
         ik.solver.leftHandEffector.target = leftHandTarget;
-        ik.solver.leftHandEffector.positionWeight = currentWeight;
-        ik.solver.leftHandEffector.rotationWeight = currentWeight;
+        //ik.solver.leftHandEffector.positionWeight = currentWeight;
+        //ik.solver.leftHandEffector.rotationWeight = currentWeight;
     }
 
     public void SetGunTargets(Transform rightTarget, Transform leftTarget)

@@ -5,13 +5,13 @@ public abstract class Weapons : MonoBehaviour
 {
     [SerializeField] public WeaponData weaponData;
     [Header("IK")]
-    [SerializeField] private Transform l_handEffector;
-    [SerializeField] private Transform r_handEffector;
+    [SerializeField] public Transform l_handEffector;
+    [SerializeField] public Transform r_handEffector;
     [SerializeField] private Transform aimTransform;
     [Header("Info")]
     [SerializeField] private string weaponName;
     [SerializeField] private GameObject weaponPrefab;
-    [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField] public Transform bulletSpawnPoint;
     public int WeaponDamage { get; private set; }
     private BulletData bulletData;
     public float WeaponFireRate { get; private set;}

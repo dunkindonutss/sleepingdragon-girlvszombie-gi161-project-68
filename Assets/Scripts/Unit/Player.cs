@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : Character,IShooter
 {
     public static Player Instance;
-    public Weapons CurrentWeapon {get; private set;}
+    [field: SerializeField] public Weapons CurrentWeapon {get; private set;}
     public AimIK _AimIK;
     public FullBodyBipedIK _FullBodyBipedIK;
 
@@ -20,9 +20,14 @@ public class Player : Character,IShooter
         CurrentWeapon = WeaponToChange;
     }
 
+    public void ChangeWeapon(int Index)
+    {
+        CurrentWeapon = Inventory.Instance.WeaponsList[Index];
+    }
+
     public void Shoot(Weapons weapons)
     {
-        
+        GameObject Bullet = Instantiate(CurrentWeapon.weaponData.Bullet.bulletPrefab,CurrentWeapon.bulletSpawnPoint.position, Quaternion.identity);
     }
     
     

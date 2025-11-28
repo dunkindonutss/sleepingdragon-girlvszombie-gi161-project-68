@@ -11,9 +11,9 @@ public enum CharacterState
 }
 public abstract class Character : MonoBehaviour
 {
-    public CharacterState State {get; private set;}
+    [field: SerializeField] public CharacterState State {get; private set;}
     [SerializeField] private string name;
-    public int Health {get; private set;}
+    [field: SerializeField] public int Health {get; private set;}
     
 
     public void ChangeState(CharacterState newState)
