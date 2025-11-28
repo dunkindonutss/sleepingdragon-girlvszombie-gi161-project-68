@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
 
     public void RefreshWeaponUI()
     {
-        
+        weaponNameText.text = $"{Player.Instance.CurrentWeapon.weaponData.WeaponName}";
         bulletCountText.text = $"";
     }
     

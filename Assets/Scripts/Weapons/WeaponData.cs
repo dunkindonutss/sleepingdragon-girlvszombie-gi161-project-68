@@ -8,4 +8,5 @@ public class WeaponData : ScriptableObject
     public int WeaponDamage;
     public BulletData Bullet;
     public float WeaponFireRate;
+    public int MagazineSize;
 }
