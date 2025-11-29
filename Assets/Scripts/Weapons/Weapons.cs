@@ -1,8 +1,12 @@
 using System;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public abstract class Weapons : MonoBehaviour
 {
+    [Header("FeedBack")] 
+    [SerializeField] protected MMF_Player shootFeedBack;
+    [SerializeField] protected MMF_Player reloadFeedBack;
     [SerializeField] public WeaponData weaponData;
     [Header("IK")]
     [SerializeField] public Transform l_handEffector;
@@ -53,6 +57,7 @@ public abstract class Weapons : MonoBehaviour
     public void ReloadMagazine(int bulletCount)
     {
         BulletInGun = Mathf.Min(BulletInGun + bulletCount, MagazineSize);
+        reloadFeedBack.PlayFeedbacks();
     }
 
     public abstract void Fire();

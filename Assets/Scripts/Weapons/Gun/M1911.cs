@@ -31,6 +31,8 @@ public class M1911 : Weapons
         Bullet bullet = bulletObj.GetComponent<Bullet>();
         bullet.bulletData = bulletData;
         
+        shootFeedBack.PlayFeedbacks();
+        
         bullet.Initialize();   // ใส่ค่าจาก bulletData
         bullet.BulletMove();   // ยิงออกไป
     }

@@ -35,6 +35,8 @@ public class M4A1 : Weapons
 
         Bullet bullet = bulletObj.GetComponent<Bullet>();
         bullet.bulletData = bulletData;
+        
+        shootFeedBack.PlayFeedbacks();
 
         bullet.Initialize();
         bullet.BulletMove();
