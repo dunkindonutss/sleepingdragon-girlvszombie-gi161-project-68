@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using VolFx;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,5 +15,23 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+
     }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void LoadScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
+    
+    
 }

@@ -1,35 +1,23 @@
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private CharacterController controller;
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float smoothTime = 0.1f; // ค่าความนุ่มของการลดความเร็ว
+    [SerializeField] private float smoothTime = 0.1f;
 
-    private float currentSpeed = 0f;
+    private float currentSpeedX = 0f;
+    private float currentSpeedY = 0f;
 
-    private void Update()
+    public bool IsMoving => Mathf.Abs(currentSpeedX) > 0.01f || Mathf.Abs(currentSpeedY) > 0.01f;
+
+    public void Move(Vector2 input)
     {
-        HandleMovement();
-    }
+        currentSpeedX = Mathf.Lerp(currentSpeedX, input.x * moveSpeed, 0.2f);
+        currentSpeedY = Mathf.Lerp(currentSpeedY, input.y * moveSpeed, 0.2f);
 
-    private void HandleMovement()
-    {
-        float horizontal = InputManager.Instance.GetHorizontal();
-
-        if (Mathf.Abs(horizontal) > 0.01f)
-        {
-            // ค่อยๆ เปลี่ยน currentSpeed ไปยังความเร็วเป้าหมาย
-            currentSpeed = Mathf.Lerp(currentSpeed, horizontal * moveSpeed, 0.2f);
-        }
-        else
-        {
-            // ค่อยๆ ลดความเร็วไป 0 แบบนุ่มๆ
-            currentSpeed = Mathf.Lerp(currentSpeed, 0f, smoothTime);
-        }
-
-        Vector3 moveDir = new Vector3(currentSpeed, 0f, 0f);
-
+        Vector3 moveDir = new Vector3(currentSpeedX, 0f, currentSpeedY);
         controller.Move(moveDir * Time.deltaTime);
     }
 }

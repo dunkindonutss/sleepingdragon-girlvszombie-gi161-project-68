@@ -1,53 +1,83 @@
 using System;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [Header("Rigidbody")]
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private ParticleSystem particleOnHit;
+
+    [Header("Blood FX")]
+    [SerializeField] private GameObject bloodEffectPrefab;
+
+    [Header("Hit FeedBack")]
+    [SerializeField] private MMF_Player hitFeedBack;
+
+    [Header("Data")]
     public BulletData bulletData;
-    public float BulletForce;
-    public int Damage;
-    public float LifeTime;
+
+    private float bulletForce;
+    private int damage;
+    private float lifeTime;
 
     private void Start()
     {
         Initialize();
-
-        // หายไปเมื่อหมดเวลา
-        Destroy(gameObject, LifeTime);
+        Destroy(gameObject, lifeTime);
     }
 
     public void Initialize()
     {
         rb = GetComponent<Rigidbody>();
-        BulletForce = bulletData.BulletForce;
-        Damage = bulletData.Damage;
-        LifeTime = bulletData.LifeTime;
+
+        bulletForce = bulletData.BulletForce;
+        damage = bulletData.Damage;
+        lifeTime = bulletData.LifeTime;
     }
 
     public void BulletMove()
     {
-        // ยิงไปตามทิศทางของกระสุน
-        rb.AddForce(transform.forward * BulletForce, ForceMode.Impulse);
+        rb.AddForce(transform.forward * bulletForce, ForceMode.Impulse);
     }
 
-    public void OnHitWith(Character character)
+    public void OnHitWith(Character character, Vector3 hitPos, Vector3 hitNormal)
     {
-        character.TakeDamage(Damage);
-        Debug.Log($"{character.name} take damage {Damage}");
+        character.TakeDamage(damage);
+        Debug.Log($"{character.name} take damage {damage}");
+
+        SpawnBloodEffect(hitPos, hitNormal);
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
-        // ถ้าเป็นตัวละคร → โดนยิง
-        if (other.TryGetComponent<Character>(out var character))
+        Vector3 hitPos = transform.position;
+        Vector3 hitNormal = -transform.forward;
+
+        // เล่น Hit Feedback ก่อนทำลายกระสุน
+        if (hitFeedBack != null)
         {
-            OnHitWith(character);
-            Instantiate(particleOnHit, transform.position, Quaternion.identity);
+            hitFeedBack.PlayFeedbacks(hitPos);
         }
 
-        // หายไปเมื่อชน
+        if (other.TryGetComponent<Character>(out var character))
+        {
+            OnHitWith(character, hitPos, hitNormal);
+        }
+        else
+        {
+            SpawnBloodEffect(hitPos, hitNormal);
+        }
+
         Destroy(gameObject);
+    }
+
+    private void SpawnBloodEffect(Vector3 pos, Vector3 normal)
+    {
+        if (bloodEffectPrefab == null) return;
+
+        Quaternion rot = Quaternion.LookRotation(normal);
+        GameObject fx = Instantiate(bloodEffectPrefab, pos, rot);
+
+        Destroy(fx, 2f); // ปรับตามต้องการ เช่น 1–3 วินาที
     }
 }
