@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : Character
 {
      [SerializeField] private Player player;
      public bool IsDetectedPlayer {get; private set;}
@@ -10,4 +10,6 @@ public abstract class Enemy : MonoBehaviour
      {
           this.detectRange = detectRange;
      }
+
+     public abstract void Attack();
 }
