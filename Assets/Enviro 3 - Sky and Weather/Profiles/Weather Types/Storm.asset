@@ -20,11 +20,11 @@ MonoBehaviour:
   showSkyControls: 1
   showLightingControls: 0
   showAuroraControls: 0
-  showEnvironmentControls: 0
+  showEnvironmentControls: 1
   showAudioControls: 0
-  showAmbientAudioControls: 0
-  showWeatherAudioControls: 0
-  showLightningControls: 0
+  showAmbientAudioControls: 1
+  showWeatherAudioControls: 1
+  showLightningControls: 1
   cloudsOverride:
     ambientLightIntensity: 0.5
     coverage: 0.534
@@ -102,7 +102,7 @@ MonoBehaviour:
     weatherOverride:
     - showEditor: 1
       name: Rain
-      volume: 1
+      volume: 0.25
       spring: 0
       summer: 0
       autumn: 0

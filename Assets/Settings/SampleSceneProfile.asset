@@ -188,7 +188,7 @@ MonoBehaviour:
     m_Value: 0
   brightness:
     m_OverrideState: 1
-    m_Value: 0.767
+    m_Value: 0.5
   contrast:
     m_OverrideState: 1
     m_Value: 1
@@ -797,9 +797,9 @@ MonoBehaviour:
     m_Value: 0.05
   frameBandVerticalSize:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0.078
   frameBandVerticalSmoothness:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.092
   frameColor:
     m_OverrideState: 0
