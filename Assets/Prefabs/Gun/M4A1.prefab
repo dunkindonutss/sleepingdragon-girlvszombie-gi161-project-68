@@ -117,6 +117,8 @@ MonoBehaviour:
   <WeaponFireRate>k__BackingField: 0
   <MagazineSize>k__BackingField: 0
   <BulletInGun>k__BackingField: 0
+  RecoilForce: 2
+  _targetAim: {fileID: 0}
 --- !u!1 &1426050648627750
 GameObject:
   m_ObjectHideFlags: 0

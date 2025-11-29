@@ -2,38 +2,54 @@ using UnityEngine;
 
 public class TargetAim : MonoBehaviour
 {
-    [SerializeField] private Transform targetTransform;
-    [SerializeField] private float sensitivity = 0.1f; 
+    [SerializeField] public Transform targetTransform;
+    [SerializeField] private float sensitivity = 0.1f;
     [SerializeField] private float maxY = 45f;
     [SerializeField] private float minY = -45f;
 
-    private float currentY;
+    [Header("Recoil Settings")]
+    [SerializeField] private float recoilReturnSpeed = 5f;
+    [SerializeField] private float recoilSmooth = 0.1f;
 
-    private void Start()
-    {
-        currentY = targetTransform.localPosition.y;
-    }
+    private float mouseY;
+    private float recoilOffset;     
+    private float recoilVelocity;
 
     private void Update()
     {
         ControlTarget();
+        ProcessRecoil();
+        ApplyToTransform();
     }
 
     private void ControlTarget()
     {
-        // 1. อ่านค่าจาก InputManager (ที่แก้แล้ว)
-        // ค่าจะเป็น 0 เองทันทีที่เราหยุดขยับเมาส์ ไม่ต้องกลัวไหล
         float deltaY = InputManager.Instance.GetMouseDelta().y;
 
-        // 2. คำนวณตำแหน่ง (เอา Deadzone ออกเพื่อให้เล็งละเอียดได้)
-        currentY += deltaY * sensitivity;
+        // ⭐ เฉพาะการขยับเมาส์ ไม่ปน recoil
+        mouseY += deltaY * sensitivity;
+        mouseY = Mathf.Clamp(mouseY, minY, maxY);
+    }
 
-        // 3. จำกัดขอบเขต
-        currentY = Mathf.Clamp(currentY, minY, maxY);
+    private void ProcessRecoil()
+    {
+        // ⭐ Recoil ทำงานแยกจากเมาส์
+        recoilOffset = Mathf.SmoothDamp(recoilOffset, 0f, ref recoilVelocity, recoilSmooth);
+    }
 
-        // 4. อัปเดตตำแหน่ง
+    private void ApplyToTransform()
+    {
+        float finalY = mouseY + recoilOffset; // ⭐ รวม mouse + recoil
+        finalY = Mathf.Clamp(finalY, minY, maxY);
+
         Vector3 pos = targetTransform.localPosition;
-        pos.y = currentY;
+        pos.y = finalY;
         targetTransform.localPosition = pos;
+    }
+
+    public void AddRecoil(float recoilAmount)
+    {
+        recoilOffset += recoilAmount;
+        recoilOffset = Mathf.Clamp(recoilOffset, minY, maxY);
     }
 }

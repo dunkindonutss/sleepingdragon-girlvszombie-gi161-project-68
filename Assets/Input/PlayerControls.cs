@@ -191,8 +191,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""24917a44-4cdf-4a7f-a7e3-76bc618f1248"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ChangeWeapon"",

@@ -14,7 +14,7 @@ public abstract class Weapons : MonoBehaviour
     [SerializeField] public Transform bulletSpawnPoint;
 
     public int WeaponDamage { get; private set; }
-    private BulletData bulletData;
+    protected BulletData bulletData;
     [field: SerializeField] public float WeaponFireRate { get; private set;}
     [field: SerializeField] public int MagazineSize { get; private set;}
     [field: SerializeField] public int BulletInGun { get; private set;}
@@ -54,25 +54,6 @@ public abstract class Weapons : MonoBehaviour
     {
         BulletInGun = Mathf.Min(BulletInGun + bulletCount, MagazineSize);
     }
-    
-    public void Fire()
-    {
-        if (BulletInGun <= 0)
-        {
-            Debug.Log("No bullets");
-            return;
-        }
 
-        BulletInGun--;
-
-        GameObject bulletObj = Instantiate(bulletData.bulletPrefab,
-            bulletSpawnPoint.position,
-            bulletSpawnPoint.rotation);
-
-        Bullet bullet = bulletObj.GetComponent<Bullet>();
-        bullet.bulletData = bulletData;
-
-        bullet.Initialize();   // ใส่ค่าจาก bulletData
-        bullet.BulletMove();   // ยิงออกไป
-    }
+    public abstract void Fire();
 }

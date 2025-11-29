@@ -22,7 +22,11 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        ChangeNextWeapon();
+        if (InputManager.Instance.TryChangeWeapon())
+        {
+            ChangeNextWeapon();
+        }
+        //ChangeNextWeapon();
     }
 
     public void ShowCurrentWeapon()
@@ -38,7 +42,8 @@ public class WeaponManager : MonoBehaviour
 
     public void ChangeNextWeapon()
     {
-        if (!InputManager.Instance.TryChangeWeapon()) return;
+        //if (!InputManager.Instance.TryChangeWeapon()) return;
+        Debug.Log("อิอิ");
 
         int weaponCount = Inventory.Instance.WeaponsList.Count;
         if (weaponCount <= 1) return; // มีปืนเดียวไม่ต้องเปลี่ยน
@@ -63,9 +68,13 @@ public class WeaponManager : MonoBehaviour
         Inventory.Instance.currentWeaponIndex = nextIndex;
 
         Player.Instance.ChangeWeapon(nextIndex);
+        Debug.Log("เปลี่ยนอาวุธแล้ว");
         ShowCurrentWeapon();
+        Debug.Log("โชว์อาวุธไหม่แล้ว");
         ikController.SetGunTargets(Player.Instance.CurrentWeapon.r_handEffector,Player.Instance.CurrentWeapon.l_handEffector);
+        Debug.Log("ปรับ ik แล้ว");
         UIManager.Instance.RefreshWeaponUI();
+        Debug.Log("Refresh UI");
     }
 
     public void ChangeWeapon(int index)

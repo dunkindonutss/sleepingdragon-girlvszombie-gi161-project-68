@@ -13,4 +13,25 @@ public class M1911 : Weapons
     {
         
     }
+
+    public override void Fire()
+    {
+        if (BulletInGun <= 0)
+        {
+            Debug.Log("No bullets");
+            return;
+        }
+        
+        AdjustBulletInGun(-1);
+        
+        GameObject bulletObj = Instantiate(bulletData.bulletPrefab,
+            bulletSpawnPoint.position,
+            bulletSpawnPoint.rotation);
+        
+        Bullet bullet = bulletObj.GetComponent<Bullet>();
+        bullet.bulletData = bulletData;
+        
+        bullet.Initialize();   // ใส่ค่าจาก bulletData
+        bullet.BulletMove();   // ยิงออกไป
+    }
 }

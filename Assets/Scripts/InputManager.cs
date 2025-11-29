@@ -31,7 +31,10 @@ public class InputManager : MonoBehaviour
         input.Movement.Crouch.performed += ctx => crouchPressed = true;
         input.Movement.Crouch.canceled  += ctx => crouchPressed = false;
 
-        input.GamePlay.ChangeWeapon.performed += OnChangeWeapon;
+        input.GamePlay.ChangeWeapon.performed += ctx =>
+        {
+            WeaponManager.Instance.ChangeNextWeapon();
+        };
         input.GamePlay.Reload.performed += OnReload;
         input.GamePlay.Shoot.performed += OnShoot;
         
@@ -70,6 +73,7 @@ public class InputManager : MonoBehaviour
         if (changeWeaponPressed)
         {
             changeWeaponPressed = false;
+            Debug.Log("ChangeWeapon performed");
             return true;
         }
         return false;
