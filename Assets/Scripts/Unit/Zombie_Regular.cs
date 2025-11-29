@@ -13,9 +13,11 @@ public class Zombie_Regular : Enemy, IPatrolable
 
     [Header("Detection Settings")]
     [SerializeField] private LayerMask playerLayer;
-
+    
+    [Header("ETC")]
     private int currentPatrolIndex = 0;
     private Transform player;
+    [SerializeField] private AudioSource audioSource;
 
     private void Start()
     {
@@ -199,5 +201,6 @@ public class Zombie_Regular : Enemy, IPatrolable
         ChangeState(EnemyState.Dead);
         BoxCollider boxCollider = GetComponent<BoxCollider>();
         if (boxCollider != null) boxCollider.enabled = false;
+        audioSource.Stop();
     }
 }

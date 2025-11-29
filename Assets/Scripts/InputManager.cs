@@ -11,7 +11,8 @@ public class InputManager : MonoBehaviour
     private bool crouchPressed;
     private bool changeWeaponPressed;
     private bool reloadPressed;
-    private bool shootPressed;       // สำหรับตรวจสอบการยิง
+    private bool shootPressed;
+    private bool mainMenuPressed;
 
     private void Awake()
     {
@@ -25,33 +26,41 @@ public class InputManager : MonoBehaviour
     {
         input.Enable();
 
+        // Movement
         input.Movement.Move.performed += OnMove;
         input.Movement.Move.canceled  += OnMoveCanceled;
-
         input.Movement.Crouch.performed += ctx => crouchPressed = true;
         input.Movement.Crouch.canceled  += ctx => crouchPressed = false;
 
-        input.GamePlay.ChangeWeapon.performed += ctx =>
-        {
-            WeaponManager.Instance.ChangeNextWeapon();
-        };
+        // GamePlay
+        input.GamePlay.ChangeWeapon.performed += OnChangeWeapon;
         input.GamePlay.Reload.performed += OnReload;
         input.GamePlay.Shoot.performed += OnShoot;
-        
+
+        // UI
+        input.UI.MainMenu.performed += ctx => mainMenuPressed = true;
     }
 
     private void OnDisable()
     {
+        // Movement
         input.Movement.Move.performed -= OnMove;
         input.Movement.Move.canceled  -= OnMoveCanceled;
+        input.Movement.Crouch.performed -= ctx => crouchPressed = true;
+        input.Movement.Crouch.canceled  -= ctx => crouchPressed = false;
 
+        // GamePlay
         input.GamePlay.ChangeWeapon.performed -= OnChangeWeapon;
         input.GamePlay.Reload.performed -= OnReload;
         input.GamePlay.Shoot.performed -= OnShoot;
 
+        // UI
+        input.UI.MainMenu.performed -= ctx => mainMenuPressed = true;
+
         input.Disable();
     }
 
+    // Movement callbacks
     private void OnMove(InputAction.CallbackContext ctx) => moveInput = ctx.ReadValue<Vector2>();
     private void OnMoveCanceled(InputAction.CallbackContext ctx) => moveInput = Vector2.zero;
 
@@ -62,10 +71,7 @@ public class InputManager : MonoBehaviour
     // ฟังก์ชันดึงค่า input
     public float GetHorizontal() => moveInput.x;
     public Vector2 GetMove() => moveInput;
-    public Vector2 GetMouseDelta() 
-    {
-        return input.GamePlay.MouseDelta.ReadValue<Vector2>();
-    }
+    public Vector2 GetMouseDelta() => input.GamePlay.MouseDelta.ReadValue<Vector2>();
     public bool IsCrouching() => crouchPressed;
 
     public bool TryChangeWeapon()
@@ -94,6 +100,16 @@ public class InputManager : MonoBehaviour
         if (shootPressed)
         {
             shootPressed = false;
+            return true;
+        }
+        return false;
+    }
+
+    public bool TryMainMenu()
+    {
+        if (mainMenuPressed)
+        {
+            mainMenuPressed = false;
             return true;
         }
         return false;

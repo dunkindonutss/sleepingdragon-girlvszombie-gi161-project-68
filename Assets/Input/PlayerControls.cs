@@ -200,6 +200,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""fdadf7b2-dac2-466a-b266-ef21fc0ae2ae"",
+            ""actions"": [
+                {
+                    ""name"": ""MainMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""27ccab0d-5cf1-4353-91ff-96ccdc36147a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3964f179-5c5b-419a-9048-ec28523d21f3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MainMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -232,12 +260,16 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_GamePlay_Interact = m_GamePlay.FindAction("Interact", throwIfNotFound: true);
         m_GamePlay_MouseDelta = m_GamePlay.FindAction("MouseDelta", throwIfNotFound: true);
         m_GamePlay_ChangeWeapon = m_GamePlay.FindAction("ChangeWeapon", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_MainMenu = m_UI.FindAction("MainMenu", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
     {
         UnityEngine.Debug.Assert(!m_Movement.enabled, "This will cause a leak and performance issues, PlayerControls.Movement.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_GamePlay.enabled, "This will cause a leak and performance issues, PlayerControls.GamePlay.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, PlayerControls.UI.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -427,6 +459,52 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public GamePlayActions @GamePlay => new GamePlayActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+    private readonly InputAction m_UI_MainMenu;
+    public struct UIActions
+    {
+        private @PlayerControls m_Wrapper;
+        public UIActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MainMenu => m_Wrapper.m_UI_MainMenu;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void AddCallbacks(IUIActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
+            @MainMenu.started += instance.OnMainMenu;
+            @MainMenu.performed += instance.OnMainMenu;
+            @MainMenu.canceled += instance.OnMainMenu;
+        }
+
+        private void UnregisterCallbacks(IUIActions instance)
+        {
+            @MainMenu.started -= instance.OnMainMenu;
+            @MainMenu.performed -= instance.OnMainMenu;
+            @MainMenu.canceled -= instance.OnMainMenu;
+        }
+
+        public void RemoveCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUIActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UIActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UIActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     private int m_NewControlSchemeSchemeIndex = -1;
     public InputControlScheme NewControlSchemeScheme
     {
@@ -448,5 +526,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnMouseDelta(InputAction.CallbackContext context);
         void OnChangeWeapon(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnMainMenu(InputAction.CallbackContext context);
     }
 }

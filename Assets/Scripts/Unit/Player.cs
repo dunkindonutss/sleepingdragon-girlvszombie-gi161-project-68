@@ -173,6 +173,7 @@ public class Player : Character, IShooter
                 CharacterController cc = GetComponent<CharacterController>();
                 Destroy(cc);
                 animator.SetTrigger("IsDead");
+                UIManager.Instance.OpenPanel(1);
                 animator.SetLayerWeight(1,0);
                 GunIKController gunIKController = GetComponent<GunIKController>();
                 _AimIK.Disable();

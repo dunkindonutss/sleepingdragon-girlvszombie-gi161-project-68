@@ -3092,6 +3092,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  audioSource: {fileID: 3584936919016515562}
 --- !u!65 &6221482273619538292
 BoxCollider:
   m_ObjectHideFlags: 0
