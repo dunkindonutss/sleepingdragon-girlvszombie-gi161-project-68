@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 380611056441782464}
   - component: {fileID: 4670209415887926009}
   - component: {fileID: -2954229296895966893}
+  - component: {fileID: 1385381029442999713}
   m_Layer: 0
   m_Name: Pistol_Bullet
   m_TagString: Untagged
@@ -78,6 +79,27 @@ MonoBehaviour:
   BulletForce: 0
   Damage: 0
   LifeTime: 0
+--- !u!65 &1385381029442999713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2989000923634411228}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.491642, y: 0.17204422, z: 0.17052764}
+  m_Center: {x: -0.11819512, y: 0.0036539882, z: -0.011451334}
 --- !u!1 &3585594593242577515
 GameObject:
   m_ObjectHideFlags: 0

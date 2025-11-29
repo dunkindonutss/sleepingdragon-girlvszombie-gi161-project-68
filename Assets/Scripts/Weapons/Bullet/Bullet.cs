@@ -4,6 +4,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private ParticleSystem particleOnHit;
     public BulletData bulletData;
     public float BulletForce;
     public int Damage;
@@ -34,14 +35,16 @@ public class Bullet : MonoBehaviour
     public void OnHitWith(Character character)
     {
         character.TakeDamage(Damage);
+        Debug.Log($"{character.name} take damage {Damage}");
     }
-
-    private void OnCollisionEnter(Collision collision)
+    
+    private void OnTriggerEnter(Collider other)
     {
         // ถ้าเป็นตัวละคร → โดนยิง
-        if (collision.collider.TryGetComponent<Character>(out var character))
+        if (other.TryGetComponent<Character>(out var character))
         {
             OnHitWith(character);
+            Instantiate(particleOnHit, transform.position, Quaternion.identity);
         }
 
         // หายไปเมื่อชน

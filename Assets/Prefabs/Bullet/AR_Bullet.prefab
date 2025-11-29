@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 8854875397543708831}
   - component: {fileID: 3920513904931941537}
   - component: {fileID: 7714143201819388313}
+  - component: {fileID: 4327146351575743498}
   m_Layer: 0
   m_Name: AR_Bullet
   m_TagString: Untagged
@@ -164,3 +165,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &4327146351575743498
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8585542772986347399}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.2236428, y: 0.1831235, z: 0.3472309}
+  m_Center: {x: 0.067647874, y: -0.0070161074, z: -0.0075805783}

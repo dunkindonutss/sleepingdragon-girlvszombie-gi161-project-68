@@ -2475,6 +2475,7 @@ GameObject:
   - component: {fileID: 9091620405179435025}
   - component: {fileID: 1373056102609906958}
   - component: {fileID: 383081202732270504}
+  - component: {fileID: 6221482273619538292}
   m_Layer: 0
   m_Name: Zombie_Regular
   m_TagString: Untagged
@@ -2593,6 +2594,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   animator: {fileID: 8292663214552767316}
+--- !u!65 &6221482273619538292
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7517323582250412597}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.6279315, z: 1}
+  m_Center: {x: 0, y: 0.8874151, z: 0}
 --- !u!1 &7554627576946413252
 GameObject:
   m_ObjectHideFlags: 0

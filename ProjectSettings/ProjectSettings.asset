@@ -16,7 +16,7 @@ PlayerSettings:
   productName: GirlVSZombie
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  m_SplashScreenBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
@@ -829,7 +829,7 @@ PlayerSettings:
     PS5: ENVIRO_3;ENVIRO_URP
     QNX: ENVIRO_3;ENVIRO_URP
     ReservedCFE: ENVIRO_3;ENVIRO_URP
-    Standalone: MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED;ENVIRO_3;ENVIRO_URP;ATMOSPHERIC_HEIGHT_FOG
+    Standalone: MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED;ENVIRO_3;ENVIRO_URP;ATMOSPHERIC_HEIGHT_FOG;VOL_FX
     VisionOS: ENVIRO_3;ENVIRO_URP
     WebGL: ENVIRO_3;ENVIRO_URP
     XboxOne: ENVIRO_3;ENVIRO_URP

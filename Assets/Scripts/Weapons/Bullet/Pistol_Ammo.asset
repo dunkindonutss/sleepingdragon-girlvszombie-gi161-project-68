@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Pistol_Ammo
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2989000923634411228, guid: e38fb0b8303487b47896259deca1deb3, type: 3}
-  BulletForce: 10
+  BulletForce: 25
   Damage: 5
   LifeTime: 3
