@@ -21,7 +21,6 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         AddWeapon(0);
-        AddWeapon(1);
         currentWeaponIndex = 0;
         WeaponManager.Instance.ChangeWeapon(0);
     }

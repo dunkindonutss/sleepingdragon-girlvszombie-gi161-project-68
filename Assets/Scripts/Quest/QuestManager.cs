@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,11 @@ public class QuestManager : MonoBehaviour
     {
         if(Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        AddQuest(0);
     }
 
     public void AddQuest(QuestData questData)

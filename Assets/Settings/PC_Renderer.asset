@@ -64,6 +64,24 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 2cb163f37e9b5b24ea6a80fb26d1dcb0, type: 3}
   - {fileID: 2800000, guid: 8a0824da1995cd648bcdb663180f186d, type: 3}
   _grainClamp: 0.5
+--- !u!114 &-5987258486808287102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 473a86c9e274347dfbdde619584cebe9, type: 3}
+  m_Name: HighlightPlusRenderPassFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  renderPassEvent: 500
+  clearStencil: 0
+  previewInEditMode: 1
+  showInSceneView: 1
+  showInPreviewCamera: 0
 --- !u!114 &-5600787312582035657
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -516,7 +534,8 @@ MonoBehaviour:
   - {fileID: -4005516670539220584}
   - {fileID: 8840856799714177785}
   - {fileID: -4503866280665694272}
-  m_RendererFeatureMap: ad6b866f10d7b46c1dd425b856f62f6398b99a6ecf8b69c8f9720f216b08b17ac0bf0ff17a0d7fc1
+  - {fileID: -5987258486808287102}
+  m_RendererFeatureMap: ad6b866f10d7b46c1dd425b856f62f6398b99a6ecf8b69c8f9720f216b08b17ac0bf0ff17a0d7fc1826859cb20fce8ac
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}

@@ -22,7 +22,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        if (InputManager.Instance.TryChangeWeapon())
+        if (Input.GetKeyDown(KeyCode.F))
         {
             ChangeNextWeapon();
         }

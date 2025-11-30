@@ -70,7 +70,6 @@ public class Player : Character, IShooter
 
         // อัปเดต Blend Tree float
         animator.SetFloat("MoveX", moveInput.x);
-        animator.SetFloat("MoveY", moveInput.y);
     }
 
     public void ChangeWeapon(Weapons weaponToChange)
@@ -107,7 +106,7 @@ public class Player : Character, IShooter
         }
 
         UIManager.Instance.RefreshWeaponUI();
-        animator.SetTrigger("Reload");
+        
 
         // หลังรีโหลดกลับ Idle หรือ Moving
         if (movement.IsMoving)
@@ -122,7 +121,7 @@ public class Player : Character, IShooter
 
         ChangeState(CharacterState.Attacking);
         CurrentWeapon.Fire();
-        animator.SetTrigger("Shoot");
+        
 
         // หลังยิงกลับ Idle / Moving
         if (movement.IsMoving)
@@ -157,10 +156,10 @@ public class Player : Character, IShooter
                 animator.SetBool("IsMoving", true);
                 break;
             case CharacterState.Attacking:
-                animator.SetTrigger("Shoot"); // หรือใช้ Trigger ของยิง
+                //animator.SetTrigger("Shoot"); // หรือใช้ Trigger ของยิง
                 break;
             case CharacterState.Reloading:
-                animator.SetTrigger("Reload");
+                //animator.SetTrigger("Reload");
                 break;
             case CharacterState.Pickup:
                 animator.SetTrigger("IsPickup");

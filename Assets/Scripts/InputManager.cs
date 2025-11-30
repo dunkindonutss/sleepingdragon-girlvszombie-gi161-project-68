@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     private bool reloadPressed;
     private bool shootPressed;
     private bool mainMenuPressed;
+    private bool interactPressed;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class InputManager : MonoBehaviour
         input.GamePlay.ChangeWeapon.performed += OnChangeWeapon;
         input.GamePlay.Reload.performed += OnReload;
         input.GamePlay.Shoot.performed += OnShoot;
+        input.GamePlay.Interact.performed += OnInteract;
 
         // UI
         input.UI.MainMenu.performed += ctx => mainMenuPressed = true;
@@ -53,6 +55,7 @@ public class InputManager : MonoBehaviour
         input.GamePlay.ChangeWeapon.performed -= OnChangeWeapon;
         input.GamePlay.Reload.performed -= OnReload;
         input.GamePlay.Shoot.performed -= OnShoot;
+        input.GamePlay.Interact.performed -= OnInteract;
 
         // UI
         input.UI.MainMenu.performed -= ctx => mainMenuPressed = true;
@@ -67,6 +70,8 @@ public class InputManager : MonoBehaviour
     private void OnChangeWeapon(InputAction.CallbackContext ctx) => changeWeaponPressed = true;
     private void OnReload(InputAction.CallbackContext ctx) => reloadPressed = true;
     private void OnShoot(InputAction.CallbackContext ctx) => shootPressed = true;
+    
+    private void OnInteract(InputAction.CallbackContext ctx) => interactPressed = true;
 
     // ฟังก์ชันดึงค่า input
     public float GetHorizontal() => moveInput.x;
@@ -110,6 +115,16 @@ public class InputManager : MonoBehaviour
         if (mainMenuPressed)
         {
             mainMenuPressed = false;
+            return true;
+        }
+        return false;
+    }
+    
+    public bool TryInteract()
+    {
+        if (interactPressed)
+        {
+            interactPressed = false;
             return true;
         }
         return false;

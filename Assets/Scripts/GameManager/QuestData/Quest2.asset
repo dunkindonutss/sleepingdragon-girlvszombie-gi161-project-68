@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4720ea017a31e1d4fa8cc05005cbfed1, type: 3}
   m_Name: Quest2
   m_EditorClassIdentifier: 
-  questName: Unlock Main Gate
-  description: Unlock Main Gate
+  questName: Find A Key For Main Gate
+  description: Find A Key For Main Gate
   maxProgress: 1
